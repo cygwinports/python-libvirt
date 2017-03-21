@@ -1,0 +1,215 @@
+--- origsrc/libvirt-python-3.1.0/libvirt-lxc-override.c	2016-12-04 15:14:32.000000000 -0600
++++ src/libvirt-python-3.1.0/libvirt-lxc-override.c	2017-03-16 21:40:10.383860600 -0500
+@@ -22,17 +22,9 @@
+ #include "build/libvirt-lxc.h"
+ 
+ #if PY_MAJOR_VERSION > 2
+-# ifndef __CYGWIN__
+ extern PyObject *PyInit_libvirtmod_lxc(void);
+-# else
+-extern PyObject *PyInit_cygvirtmod_lxc(void);
+-# endif
+ #else
+-# ifndef __CYGWIN__
+ extern void initlibvirtmod_lxc(void);
+-# else
+-extern void initcygvirtmod_lxc(void);
+-# endif
+ #endif
+ 
+ #if 0
+@@ -110,11 +102,7 @@ static PyMethodDef libvirtLxcMethods[] =
+ #if PY_MAJOR_VERSION > 2
+ static struct PyModuleDef moduledef = {
+     PyModuleDef_HEAD_INIT,
+-# ifndef __CYGWIN__
+     "libvirtmod_lxc",
+-# else
+-    "cygvirtmod_lxc",
+-# endif
+     NULL,
+     -1,
+     libvirtLxcMethods,
+@@ -125,11 +113,7 @@ static struct PyModuleDef moduledef = {
+ };
+ 
+ PyObject *
+-# ifndef __CYGWIN__
+ PyInit_libvirtmod_lxc
+-# else
+-PyInit_cygvirtmod_lxc
+-# endif
+ (void)
+ {
+     PyObject *module;
+@@ -143,11 +127,7 @@ PyInit_cygvirtmod_lxc
+ }
+ #else /* ! PY_MAJOR_VERSION > 2 */
+ void
+-# ifndef __CYGWIN__
+ initlibvirtmod_lxc
+-# else
+-initcygvirtmod_lxc
+-# endif
+ (void)
+ {
+     if (virInitialize() < 0)
+@@ -155,11 +135,7 @@ initcygvirtmod_lxc
+ 
+     /* initialize the python extension module */
+     Py_InitModule((char *)
+-# ifndef __CYGWIN__
+                   "libvirtmod_lxc",
+-# else
+-                  "cygvirtmod_lxc",
+-# endif
+                   libvirtLxcMethods);
+ }
+ #endif /* ! PY_MAJOR_VERSION > 2 */
+--- origsrc/libvirt-python-3.1.0/libvirt-override.c	2017-03-03 04:25:43.000000000 -0600
++++ src/libvirt-python-3.1.0/libvirt-override.c	2017-03-16 21:40:10.408392600 -0500
+@@ -26,17 +26,9 @@
+ #include "libvirt-utils.h"
+ 
+ #if PY_MAJOR_VERSION > 2
+-# ifndef __CYGWIN__
+ extern PyObject *PyInit_libvirtmod(void);
+-# else
+-extern PyObject *PyInit_cygvirtmod(void);
+-# endif
+ #else
+-# ifndef __CYGWIN__
+ extern void initlibvirtmod(void);
+-# else
+-extern void initcygvirtmod(void);
+-# endif
+ #endif
+ 
+ #if 0
+@@ -9623,11 +9615,7 @@ static PyMethodDef libvirtMethods[] = {
+ #if PY_MAJOR_VERSION > 2
+ static struct PyModuleDef moduledef = {
+     PyModuleDef_HEAD_INIT,
+-# ifndef __CYGWIN__
+     "libvirtmod",
+-# else
+-    "cygvirtmod",
+-# endif
+     NULL,
+     -1,
+     libvirtMethods,
+@@ -9638,11 +9626,7 @@ static struct PyModuleDef moduledef = {
+ };
+ 
+ PyObject *
+-# ifndef __CYGWIN__
+ PyInit_libvirtmod
+-# else
+-PyInit_cygvirtmod
+-# endif
+ (void)
+ {
+     PyObject *module;
+@@ -9656,11 +9640,7 @@ PyInit_cygvirtmod
+ }
+ #else /* ! PY_MAJOR_VERSION > 2 */
+ void
+-# ifndef __CYGWIN__
+ initlibvirtmod
+-# else
+-initcygvirtmod
+-# endif
+ (void)
+ {
+     if (virInitialize() < 0)
+@@ -9668,11 +9648,7 @@ initcygvirtmod
+ 
+     /* initialize the python extension module */
+     Py_InitModule((char *)
+-# ifndef __CYGWIN__
+                   "libvirtmod",
+-# else
+-                  "cygvirtmod",
+-# endif
+                   libvirtMethods);
+ }
+ #endif /* ! PY_MAJOR_VERSION > 2 */
+--- origsrc/libvirt-python-3.1.0/libvirt-qemu-override.c	2016-12-04 15:14:32.000000000 -0600
++++ src/libvirt-python-3.1.0/libvirt-qemu-override.c	2017-03-16 21:40:10.421866300 -0500
+@@ -22,17 +22,9 @@
+ #include "build/libvirt-qemu.h"
+ 
+ #if PY_MAJOR_VERSION > 2
+-# ifndef __CYGWIN__
+ extern PyObject *PyInit_libvirtmod_qemu(void);
+-# else
+-extern PyObject *PyInit_cygvirtmod_qemu(void);
+-# endif
+ #else
+-# ifndef __CYGWIN__
+ extern void initlibvirtmod_qemu(void);
+-# else
+-extern void initcygvirtmod_qemu(void);
+-# endif
+ #endif
+ 
+ #if 0
+@@ -354,11 +346,7 @@ static PyMethodDef libvirtQemuMethods[]
+ #if PY_MAJOR_VERSION > 2
+ static struct PyModuleDef moduledef = {
+     PyModuleDef_HEAD_INIT,
+-# ifndef __CYGWIN__
+     "libvirtmod_qemu",
+-# else
+-    "cygvirtmod_qemu",
+-# endif
+     NULL,
+     -1,
+     libvirtQemuMethods,
+@@ -369,11 +357,7 @@ static struct PyModuleDef moduledef = {
+ };
+ 
+ PyObject *
+-# ifndef __CYGWIN__
+ PyInit_libvirtmod_qemu
+-# else
+-PyInit_cygvirtmod_qemu
+-# endif
+ (void)
+ {
+     PyObject *module;
+@@ -387,11 +371,7 @@ PyInit_cygvirtmod_qemu
+ }
+ #else /* ! PY_MAJOR_VERSION > 2 */
+ void
+-# ifndef __CYGWIN__
+ initlibvirtmod_qemu
+-# else
+-initcygvirtmod_qemu
+-# endif
+ (void)
+ {
+     if (virInitialize() < 0)
+@@ -399,11 +379,7 @@ initcygvirtmod_qemu
+ 
+     /* initialize the python extension module */
+     Py_InitModule((char *)
+-# ifndef __CYGWIN__
+                   "libvirtmod_qemu",
+-# else
+-                  "cygvirtmod_qemu",
+-# endif
+                   libvirtQemuMethods);
+ }
+ #endif /* ! PY_MAJOR_VERSION > 2 */
+--- origsrc/libvirt-python-3.1.0/setup.py	2017-03-03 04:25:43.000000000 -0600
++++ src/libvirt-python-3.1.0/setup.py	2017-03-16 21:40:10.441369400 -0500
+@@ -90,7 +90,7 @@ def get_module_lists():
+ 
+     c_modules = []
+     py_modules = []
+-    ldflags = get_pkgconfig_data(["--libs-only-L"], "libvirt", False).split()
++    ldflags = get_pkgconfig_data(["--libs"], "libvirt", False).split()
+     cflags = get_pkgconfig_data(["--cflags"], "libvirt", False).split()
+ 
+     module = Extension('libvirtmod',
