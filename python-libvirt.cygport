@@ -1,7 +1,7 @@
-inherit python2-distutils python3-distutils
+inherit python-wheel
 
 NAME="python-libvirt"
-VERSION=3.2.0
+VERSION=3.4.0
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Python bindings of libvirt"
@@ -11,23 +11,3 @@ HOMEPAGE="http://libvirt.org/"
 SRC_URI="ftp://libvirt.org/libvirt/python/libvirt-python-${VERSION}.tar.gz"
 SRC_DIR="libvirt-python-${VERSION}"
 PATCH_URI="3.1.0-cygwin-dll.patch"
-
-PKG_NAMES="python2-libvirt python3-libvirt"
-python2_libvirt_OBSOLETES=${NAME}
-python2_libvirt_DOCS="AUTHORS ChangeLog COPYING* NEWS README"
-python2_libvirt_CONTENTS=${PYTHON2_SITELIB#/}
-python3_libvirt_DOCS="AUTHORS ChangeLog COPYING* NEWS README"
-python3_libvirt_CONTENTS=${PYTHON3_SITELIB#/}
-
-src_compile() {
-	lndirs
-	cd ${B}
-	python2_distutils_compile
-	python3_distutils_compile
-}
-
-src_install() {
-	cd ${B}
-	python2_distutils_install
-	python3_distutils_install
-}
