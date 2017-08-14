@@ -1,7 +1,7 @@
 inherit python-wheel
 
 NAME="python-libvirt"
-VERSION=3.4.0
+VERSION=3.6.0
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Python bindings of libvirt"
